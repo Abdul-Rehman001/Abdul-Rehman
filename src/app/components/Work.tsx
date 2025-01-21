@@ -10,7 +10,6 @@ import {
   SiJavascript,
 } from "react-icons/si";
 import Image from "next/image";
-import Spline from "@splinetool/react-spline";
 
 const WorkPage = () => {
   const experience = [
@@ -117,10 +116,6 @@ const WorkPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-violet-950 text-white py-24 px-4 sm:px-6 lg:px-8">
-      <div className="absolute h-full w-screen -translate-y[-50rem]  overflow-hidden">
-        <Spline scene="https://prod.spline.design/XmKCO-EfQYhFk9XM/scene.splinecode" />
-      </div>
-
       <div className="max-w-7xl mx-auto space-y-24">
         {/* Experience Section */}
         <motion.div
@@ -186,9 +181,6 @@ const WorkPage = () => {
             ))}
           </div>
         </motion.div>
-        <div className="absolute h-full w-screen -translate-y[-50rem] ">
-          <Spline scene="https://prod.spline.design/XmKCO-EfQYhFk9XM/scene.splinecode" />
-        </div>
 
         {/* Projects Section */}
         <motion.div

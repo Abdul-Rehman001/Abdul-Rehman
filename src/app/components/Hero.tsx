@@ -3,9 +3,10 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Github, Instagram, Linkedin, Sparkles } from "lucide-react";
 import Link from "next/link";
-import Spline from "@splinetool/react-spline";
+
+import Image from "next/image";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,6 +15,23 @@ const Hero = () => {
 
   const backgroundY = useTransform(scrollY, [0, 300], [0, 100]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const socialLinks = [
+    {
+      icon: <Github className="w-6 h-6" />,
+      href: "https://github.com/yourusername",
+      color: "hover:text-purple-500",
+    },
+    {
+      icon: <Linkedin className="w-6 h-6" />,
+      href: "https://linkedin.com/in/yourusername",
+      color: "hover:text-blue-500",
+    },
+    {
+      icon: <Instagram className="w-6 h-6" />,
+      href: "https://instagram.com/yourusername",
+      color: "hover:text-pink-500",
+    },
+  ];
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -37,14 +55,14 @@ const Hero = () => {
       className="min-h-screen relative flex flex-col lg:flex-row items-center bg-gradient-to-bl from-gray-950 to-violet-950/20 overflow-hidden"
     >
       {/* Background animations */}
-      <div
+      {/* <div
         className="absolute items-center h-[50rem] -translate-y-[-25rem] lg:h-auto lg:w-1/2 lg:right-[15rem] 
                    transform lg:translate-x-1/3 
                    md:translate-y-1/4 lg:translate-y-0
-                   z-20 overflow-hidden"
+                   z-20 overflow-hidden "
       >
         <Spline scene="https://prod.spline.design/kZvr1nQUD-QvETXr/scene.splinecode" />
-      </div>
+      </div> */}
 
       <motion.div
         className="absolute inset-0 overflow-hidden"
@@ -71,7 +89,7 @@ const Hero = () => {
 
       {/* Main content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2  lg:gap-12 items-center">
           {/* Left column */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -154,9 +172,63 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="relative w-full h-[400px] lg:h-[600px] mt-12 lg:mt-0"
+            className="lg:relative lg:w-full lg:min-h-screen lg:mt-14 lg:pt-4 overflow-hidden lg:items-center"
           >
-            {/* Spline container is now managed by the absolute positioned div above */}
+            <div className="w-full md:w-[35rem] h-auto md:h-[35rem] flex flex-col lg:flex-row items-start lg:items-center justify-start lg:justify-end pt-8 lg:pt-14 gap-8 lg:gap-4 mx-4 mt-10">
+              {/* Avatar Container */}
+              <motion.div
+                animate={{
+                  boxShadow: [
+                    "0 0 20px rgba(139, 92, 246, 0.3)",
+                    "0 0 60px rgba(139, 92, 246, 0.3)",
+                    "0 0 20px rgba(139, 92, 246, 0.3)",
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative group rounded-full w-[20rem] h-[20rem] md:w-[25rem] md:h-[25rem] -translate-y-14 lg:-translate-y-0 lg:-translate-x-8"
+              >
+                <div className="relative rounded-full backdrop-blur-xl h-full w-full bg-gradient-to-t from-black/10 via-gray-950/30 to-purple-800/50 border-2 border-violet-700/50 flex items-center justify-center overflow-hidden group-hover:border-violet-500 transition-all duration-300 pb-16">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <Image
+                      src="/3dmemoji.svg"
+                      alt="Avatar"
+                      height={400}
+                      width={400}
+                      className="transform transition-transform duration-200 translate-y-[2rem] translate-x-2 scale-100"
+                    />
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Social Links - Centered on Small Screens */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="flex flex-row lg:flex-col gap-4 lg:gap-6 items-center justify-center lg:items-start lg:justify-start"
+              >
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`transform transition-all duration-300 ${social.color}`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -10,7 +10,6 @@ import {
   ArrowRight,
   Briefcase,
 } from "lucide-react";
-import Spline from "@splinetool/react-spline";
 
 const AboutPage = () => {
   const skills = {
@@ -70,9 +69,6 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-violet-950/10 to-gray-900 text-white py-24 px-4 sm:px-6 lg:px-8">
-      <div className="absolute h-screen w-screen  overflow-hidden">
-        <Spline scene="https://prod.spline.design/SkpXTj2WRBLSjdmo/scene.splinecode" />
-      </div>
       <div className="max-w-7xl mx-auto space-y-32">
         {/* Introduction Section */}
         <motion.section

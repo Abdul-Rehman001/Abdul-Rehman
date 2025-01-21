@@ -97,6 +97,17 @@ const ExperiencePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white py-24 px-4 sm:px-6 lg:px-8">
+      {/* Background 3D PNG
+      <div className="fixed inset-0 -z-0 translate-y-[10rem]">
+        <Image
+          src="/cube.png"
+          alt="3D Background"
+          layout="fill"
+          objectFit="contain"
+          className="opacity-100"
+        />
+      </div> */}
+
       <div className="max-w-7xl mx-auto space-y-32">
         {/* Experience Section */}
         <motion.section
