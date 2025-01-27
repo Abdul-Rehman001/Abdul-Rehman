@@ -88,7 +88,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-0">
+      <div className="relative pt-24 z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2  lg:gap-12 items-center">
           {/* Left column */}
           <motion.div
